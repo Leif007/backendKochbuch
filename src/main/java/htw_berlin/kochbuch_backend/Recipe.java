@@ -11,8 +11,9 @@ public class Recipe {
     private long id;
 
     private String name;
+    private String picture;
     private String description;
-    private int prepTime;
+    private int preparationTime;
     private int cookingTime;
     @ElementCollection
     private List<String> ingredients;
@@ -21,29 +22,30 @@ public class Recipe {
     private String dishType;
     private String mealTime;
     private String dietType;
-    private String picture;
 
 
 
 
 
 
-    public Recipe(Long id,String name, String description, int prepTime, int cookingTime, List<String> ingredients, List<String> instructions, String dishType, String mealTime, String dietType, String picture) {
+
+    public Recipe(Long id,String name, String picture, String description, int preparationTime, int cookingTime, List<String> ingredients, List<String> instructions, String dishType, String mealTime, String dietType) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.prepTime = prepTime;
+        this.picture = picture;
+        this.preparationTime = preparationTime;
         this.cookingTime = cookingTime;
+        this.description = description;
         this.ingredients = ingredients;
         this.instructions = instructions;
         this.dishType = dishType;
         this.mealTime = mealTime;
         this.dietType = dietType;
-        this.picture = picture;
 
 
 
     }
+
     public Recipe() {} // leerer Konstruktor von Hibernate benötigt
 
     public String getName() {
@@ -55,7 +57,7 @@ public class Recipe {
     }
 
     public int getPrepTime() {
-        return prepTime;
+        return preparationTime;
     }
 
     public int getCookingTime() {
