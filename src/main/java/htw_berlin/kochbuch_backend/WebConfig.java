@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer{
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedHeaders("*")
-                        .allowedOrigins("http://localhost:5174", "https://frontend-meinkochbuch-ka32.onrender.com")
+                        .allowedOrigins("http://localhost:5173", "https://frontend-meinkochbuch-ka32.onrender.com")//könnte an der URL liegen
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
             }
         }
