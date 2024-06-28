@@ -1,0 +1,16 @@
+POST http://localhost:8080/recipe
+Content-Type: application/json
+
+{
+  "cookingTime": 10,
+  "description":"A delicious pasta dish with bacon and eggs",
+  "ingredients":"pasta",
+  "name":"Etwas leckeres",
+  "prepTime": 10,
+  "instructions": "Cook pasta, fry bacon, mix eggs, add to pasta, serve.",
+  "dishType": "Main",
+  "mealTime": "Dinner",
+  "dietType": "Meat",
+  "picture": "https://www.google.com"
+
+}
