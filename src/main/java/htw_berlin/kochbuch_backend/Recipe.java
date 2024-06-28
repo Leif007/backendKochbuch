@@ -1,9 +1,9 @@
 package htw_berlin.kochbuch_backend;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 public class Recipe {
     @Id
@@ -14,8 +14,10 @@ public class Recipe {
     private String description;
     private int prepTime;
     private int cookingTime;
-    private String ingredients;
-    private String instructions;
+    @ElementCollection
+    private List<String> ingredients;
+    @ElementCollection
+    private List<String> instructions;
     private String dishType;
     private String mealTime;
     private String dietType;
@@ -25,7 +27,8 @@ public class Recipe {
 
 
 
-    public Recipe(Long id,String name, String description, int prepTime, int cookingTime, String ingredients, String instructions, String dishType, String mealTime, String dietType, String picture) {
+
+    public Recipe(Long id,String name, String description, int prepTime, int cookingTime, List<String> ingredients, List<String> instructions, String dishType, String mealTime, String dietType, String picture) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -59,13 +62,11 @@ public class Recipe {
         return cookingTime;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
+    public List<String> getIngredients() { return ingredients; }
+    public void setIngredients(List<String> ingredients) { this.ingredients = ingredients; }
 
-    public String getInstructions() {
-        return instructions;
-    }
+    public List<String> getInstructions() { return instructions; }
+    public void setInstructions(List<String> instructions) { this.instructions = instructions; }
 
     public String getDishType() {
         return dishType;
