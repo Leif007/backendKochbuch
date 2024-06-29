@@ -11,9 +11,7 @@ public class    Recipe {
     private long id;
 
     private String name;
-    private String picture;
     private String description;
-    private int preparationTime;
     private int cookingTime;
     @ElementCollection
     private List<String> ingredients;
@@ -29,11 +27,8 @@ public class    Recipe {
 
 
 
-    public Recipe(Long id,String name, String picture, String description, int preparationTime, int cookingTime, List<String> ingredients, List<String> instructions, String dishType, String mealTime, String dietType) {
-        this.id = id;
+    public Recipe(String name, String description, int cookingTime, List<String> ingredients, List<String> instructions, String dishType, String mealTime, String dietType) {
         this.name = name;
-        this.picture = picture;
-        this.preparationTime = preparationTime;
         this.cookingTime = cookingTime;
         this.description = description;
         this.ingredients = ingredients;
@@ -54,10 +49,6 @@ public class    Recipe {
 
     public String getDescription() {
         return description;
-    }
-
-    public int getPrepTime() {
-        return preparationTime;
     }
 
     public int getCookingTime() {
@@ -81,9 +72,6 @@ public class    Recipe {
     public String getDietType() {
         return dietType;
     }
-
-
-
 }
 
 

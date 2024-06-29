@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,12 +22,19 @@ public class RecipeController {
     @PostMapping("/recipe")
     public ResponseEntity<?> createRecipe(@RequestBody Recipe recipe) {
         try {
-            logger.info("Creating recipe: " + recipe);
+            logger.info("Creating recipe: {}", recipe);
+
+            // Log each field individually to verify
+            logger.info("Name: {}", recipe.getName());
+            logger.info("Description: {}", recipe.getDescription());
+            // Add similar logs for other fields...
+
             Recipe savedRecipe = service.save(recipe);
             return ResponseEntity.ok(savedRecipe);
         } catch (Exception e) {
             logger.error("Error creating recipe", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create recipe: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to create recipe: " + e.getMessage());
         }
     }
 
@@ -39,8 +47,17 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes")
-    public Iterable<Recipe> getAllRecipes() {
-        return service.getAllRecipes();
+    public ResponseEntity<List<Recipe>> getAllRecipes() {
+        try {
+            Iterable<Recipe> recipesIterable = service.getAllRecipes();
+            List<Recipe> recipesList = new ArrayList<>();
+            recipesIterable.forEach(recipesList::add); // Convert Iterable to List
+            return ResponseEntity.ok(recipesList);
+        } catch (Exception e) {
+            logger.error("Error fetching all recipes", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null); // You can customize the error response as needed
+        }
     }
 
 
