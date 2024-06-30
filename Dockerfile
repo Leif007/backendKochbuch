@@ -1,6 +1,6 @@
 FROM gradle:8-jdk21 as builder
 WORKDIR /
-COPY . ./
+COPY src/main/java/htw_berlin/kochbuch_backend ./
 RUN gradle build
 
 FROM openjdk:21-slim
