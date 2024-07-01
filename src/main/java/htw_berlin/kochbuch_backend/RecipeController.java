@@ -41,8 +41,7 @@ public class RecipeController {
         try {
             Iterable<Recipe> recipesIterable = service.getAllRecipes();
             List<Recipe> recipesList = new ArrayList<>();
-            recipesIterable.forEach(recipesList::add); // Convert Iterable to
-            List
+            recipesIterable.forEach(recipesList::add); // Convert Iterable to List
             return ResponseEntity.ok(recipesList);
         } catch (Exception e) {
             logger.error("Error fetching all recipes", e);
